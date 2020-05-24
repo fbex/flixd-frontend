@@ -1,0 +1,36 @@
+.watchlist-card {
+  max-width: 500px;
+}
+
+.card-body {
+  display: flex;
+}
+
+.card-body-right {
+  flex: 1;
+}
+
+mat-card-actions {
+  margin-bottom: 0;
+}
+
+mat-card-content {
+  margin: 0 16px;
+}
+
+mat-card-actions {
+  margin: 0 16px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tmdb-rating {
+  display: flex;
+}
+
+.tmdb-score {
+  padding: 3px 10px;
+}

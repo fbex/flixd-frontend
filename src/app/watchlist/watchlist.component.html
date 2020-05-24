@@ -1,0 +1,5 @@
+<div *ngIf="(watchlist$ | async) as watchlist">
+    <app-watchlist-item *ngFor="let item of watchlist.items"
+                        [item]="item"
+                        (removed)="onRemoved($event)"></app-watchlist-item>
+</div>
