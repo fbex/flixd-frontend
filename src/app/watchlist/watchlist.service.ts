@@ -9,13 +9,15 @@ import { Watchlist } from './watchlist.model';
 })
 export class WatchlistService {
 
+  private baseUrl = '/api';
+
   constructor(private http: HttpClient) { }
 
   getWatchlist(): Observable<Watchlist> {
-    return this.http.get<Watchlist>('/watchlist');
+    return this.http.get<Watchlist>(`${this.baseUrl}/watchlist`);
   }
 
   removeItem(mediaId: string): Observable<any> {
-    return this.http.delete(`/watchlist/item/${mediaId}`);
+    return this.http.delete(`${this.baseUrl}/watchlist/item/${mediaId}`);
   }
 }

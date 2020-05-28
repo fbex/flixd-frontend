@@ -41,7 +41,7 @@ describe('WatchlistService', () => {
       expect(result).toEqual(watchlist);
     });
 
-    const request = httpMock.expectOne('/watchlist');
+    const request = httpMock.expectOne('/api/watchlist');
     request.flush(watchlist);
     expect(request.request.method).toEqual('GET');
   });
@@ -51,7 +51,7 @@ describe('WatchlistService', () => {
       expect(result).toEqual(item);
     });
 
-    const request = httpMock.expectOne('/watchlist/item/movie-680');
+    const request = httpMock.expectOne('/api/watchlist/item/movie-680');
     request.flush(item);
     expect(request.request.method).toEqual('DELETE');
   });
