@@ -3,7 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { WatchlistComponent } from './watchlist.component';
 import { WatchlistService } from './watchlist.service';
-import { of } from 'rxjs';
+import { of, Subject } from 'rxjs';
 import { WatchlistItem } from './watchlist.model';
 import { By } from '@angular/platform-browser';
 import { WatchlistItemComponent } from './watchlist-item/watchlist-item.component';
@@ -14,6 +14,7 @@ describe('WatchlistComponent', () => {
   let component: WatchlistComponent;
   let fixture: ComponentFixture<WatchlistComponent>;
   let watchlistService: SpyObj<WatchlistService>;
+  const addItemEvent$ = new Subject<string>();
 
   const item: WatchlistItem = {
     mediaId: 'movie-680',
@@ -31,7 +32,7 @@ describe('WatchlistComponent', () => {
       declarations: [ WatchlistComponent, WatchlistItemComponent ],
       providers: [{
         provide: WatchlistService,
-        useValue: jasmine.createSpyObj('WatchlistService', ['getWatchlist', 'removeItem'])
+        useValue: jasmine.createSpyObj('WatchlistService', ['getWatchlist', 'removeItem', 'addItem'])
       }],
       schemas: [CUSTOM_ELEMENTS_SCHEMA] // due to material stuff of sub-component
     })
@@ -41,6 +42,7 @@ describe('WatchlistComponent', () => {
   beforeEach(async(() => {
     fixture = TestBed.createComponent(WatchlistComponent);
     component = fixture.componentInstance;
+    component.addItem$ = addItemEvent$;
     watchlistService = TestBed.inject(WatchlistService) as SpyObj<WatchlistService>;
     watchlistService.getWatchlist.and.returnValue(of({id: 1, items: [item, item, item]}));
     fixture.detectChanges();
@@ -64,6 +66,14 @@ describe('WatchlistComponent', () => {
 
     expect(component.onRemoved).toHaveBeenCalledWith('movie-680');
     expect(watchlistService.removeItem).toHaveBeenCalledWith('movie-680');
+    expect(watchlistService.getWatchlist).toHaveBeenCalled();
+  });
+
+  it('should trigger add item from outside', () => {
+    watchlistService.addItem.and.returnValue(of(item));
+    addItemEvent$.next('tv-2710');
+
+    expect(watchlistService.addItem).toHaveBeenCalledWith('tv-2710');
     expect(watchlistService.getWatchlist).toHaveBeenCalled();
   });
 });

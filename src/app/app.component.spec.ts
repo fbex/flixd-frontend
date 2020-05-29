@@ -1,10 +1,11 @@
-import { TestBed, async } from '@angular/core/testing';
+import { async, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { WatchlistModule } from './watchlist/watchlist.module';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -13,24 +14,21 @@ describe('AppComponent', () => {
         RouterTestingModule,
         MatIconModule,
         MatToolbarModule,
-        WatchlistModule
+        BrowserAnimationsModule
       ],
       declarations: [
         AppComponent
       ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
   }));
+
+  // TODO: test input/output, or wait for ngrx
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'flixd-frontend'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('flixd-frontend');
   });
 
   it('should render all elements', () => {
