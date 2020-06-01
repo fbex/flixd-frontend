@@ -5,3 +5,12 @@
 .spacer {
   flex: 1 1 auto;
 }
+
+app-search {
+  margin-left: 20px;
+  margin-top: 6px;
+}
+
+app-search.focused {
+  flex: 1 1 auto;
+}

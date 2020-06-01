@@ -1,11 +1,14 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <span>Flixd</span>
+    <app-search (selected)="onSelectedResult($event)"
+                (focused)="onSearchFocused($event)"
+                [class.focused]="searchIsFocused"></app-search>
     <span class="spacer"></span>
     <mat-icon class="icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon>
   </mat-toolbar-row>
 </mat-toolbar>
 
-<app-watchlist></app-watchlist>
+<app-watchlist [addItem$]="addItem$"></app-watchlist>
 
 <router-outlet></router-outlet>

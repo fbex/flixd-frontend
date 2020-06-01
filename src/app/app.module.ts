@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WatchlistModule } from './watchlist/watchlist.module';
+import { SearchModule } from './search/search.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { WatchlistModule } from './watchlist/watchlist.module';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
-    WatchlistModule
+    WatchlistModule,
+    SearchModule
   ],
   providers: [],
   bootstrap: [ AppComponent ]

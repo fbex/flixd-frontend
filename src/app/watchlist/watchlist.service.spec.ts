@@ -41,9 +41,19 @@ describe('WatchlistService', () => {
       expect(result).toEqual(watchlist);
     });
 
-    const request = httpMock.expectOne('/watchlist');
+    const request = httpMock.expectOne('/api/watchlist');
     request.flush(watchlist);
     expect(request.request.method).toEqual('GET');
+  });
+
+  it('should call to add a watchlist item', () => {
+    service.addItem('movie-123').subscribe(result => {
+      expect(result).toEqual(item);
+    });
+
+    const request = httpMock.expectOne('/api/watchlist/item/movie-123');
+    request.flush(item);
+    expect(request.request.method).toEqual('POST');
   });
 
   it('should call to remove a watchlist item', () => {
@@ -51,7 +61,7 @@ describe('WatchlistService', () => {
       expect(result).toEqual(item);
     });
 
-    const request = httpMock.expectOne('/watchlist/item/movie-680');
+    const request = httpMock.expectOne('/api/watchlist/item/movie-680');
     request.flush(item);
     expect(request.request.method).toEqual('DELETE');
   });

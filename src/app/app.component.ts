@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'flixd-frontend';
+  searchIsFocused = false;
+  addItem$ = new Subject<string>();
+
+  onSelectedResult(mediaId: string) {
+    this.addItem$.next(mediaId);
+  }
+
+  onSearchFocused(focused: boolean) {
+    this.searchIsFocused = focused;
+  }
 }
