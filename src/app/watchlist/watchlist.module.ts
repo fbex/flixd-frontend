@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { WatchlistComponent } from './watchlist.component';
 import { WatchlistItemComponent } from './watchlist-item/watchlist-item.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [ WatchlistComponent, WatchlistItemComponent ],
@@ -18,7 +19,8 @@ import { WatchlistItemComponent } from './watchlist-item/watchlist-item.componen
     MatCardModule,
     MatIconModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    FlexLayoutModule
   ]
 })
 export class WatchlistModule {

@@ -1,5 +1,11 @@
-<div *ngIf="(watchlist$ | async) as watchlist">
-    <app-watchlist-item *ngFor="let item of watchlist.items"
-                        [item]="item"
-                        (removed)="onRemoved($event)"></app-watchlist-item>
+<div fxLayout="row wrap"
+     fxLayout.lt-md="column"
+     fxLayoutAlign="flex-start"
+     *ngIf="(watchlist$ | async) as watchlist">
+  <app-watchlist-item fxFlex="0 1 calc(33.3% - 32px)"
+                      fxFlex.lt-lg="0 1 calc(50% - 32px)"
+                      fxFlex.lt-md="100%"
+                      *ngFor="let item of watchlist.items"
+                      [item]="item"
+                      (removed)="onRemoved($event)"></app-watchlist-item>
 </div>

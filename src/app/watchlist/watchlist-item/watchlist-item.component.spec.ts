@@ -39,13 +39,13 @@ describe('WatchlistItemComponent', () => {
   });
 
   it('should have all elements', () => {
-    const card = fixture.nativeElement.querySelector('mat-card.watchlist-card') as HTMLElement;
+    const card = fixture.nativeElement.querySelector('mat-card') as HTMLElement;
     expect(card).toBeTruthy();
-    expect(card.querySelector('div.card-body-left img').attributes.getNamedItem('src').value)
+    expect(card.querySelector('img').attributes.getNamedItem('src').value)
         .toEqual('https://image.tmdb.org/t/p/w154/hOg9USqmQmglmr5kGvpyg1XkhqN.jpg');
-    expect(card.querySelector('div.card-body-right mat-card-title').textContent).toEqual('Pulp Fiction');
-    expect(card.querySelector('div.card-body-right mat-card-subtitle').textContent).toEqual('1994');
-    expect(card.querySelector('div.card-body-right mat-card-content div.tmdb-rating div.tmdb-score').textContent).toEqual('8.5');
+    expect(card.querySelector('mat-card-title').textContent).toEqual('Pulp Fiction');
+    expect(card.querySelector('mat-card-subtitle').textContent).toEqual('1994');
+    expect(card.querySelector('mat-card-content div.tmdb-rating div.tmdb-score').textContent).toEqual('8.5');
   });
 
   it('should trigger delete event on click', () => {
